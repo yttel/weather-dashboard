@@ -1,0 +1,116 @@
+/* css for weather dashboard
+written by Letty Bedard */
+
+
+body{
+  font-family: 'Arial', 'Helvetica Nue', Helvetica, sans-serif;
+  color: #777777;
+  margin-top: 30px;
+  background-image: url("./Images/cork-board.png");
+}
+
+
+div.mainPanel{
+  display: flex;
+  justify-content: center;
+}
+
+div.panelContent{
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+h1.sectionContent{
+  font-family:'Georgia', 'Times New Roman', Times, serif;
+  color: #4aaaa5;
+  margin: 20px;
+}
+
+div.contentBox{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.hourRow{
+  white-space: pre-wrap;
+  height: 80px;
+  border-top: 1px solid white;
+}
+
+.hour {
+  background-color: #ffffff;
+  border-top: 1px dashed #000000;
+}
+
+.pink{
+  background-color: pink;
+}
+
+.beforeNow{
+  background-color: #d3d3d3;
+}
+
+.thisIsNow{
+  background-color: #ffffff;
+}
+
+.afterNow{
+  background-color: #b8e0de;
+}
+
+li.answerText{
+  border: 2px solid #4aaaa5;
+}
+
+.saveButton{
+  align-items: center;
+  background-color: #4aaaa5;
+  color: #ffffff;
+  border-left: 1px solid black;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.trashButton{
+  align-items: center;
+  background-color: #4aaaa5;
+  color: #ffffff;
+  border-left: 1px solid white;
+  border-radius: 15px;
+}
+
+footer.footerStyle{
+  background-color: #666666;
+  height: 40px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: 3px solid #4aaaa5;
+}     
+
+div.footerText{
+  color: #ffffff;
+  padding-top: 10px;
+}
+
+/* from develop */
+
+textarea{
+  background: transparent;
+  border: none;
+  box-shadow: black;
+  resize: none;
+  color: #000000;
+  /* border-left: 1px solid black; */
+  padding: 10px;
+}
+
+
