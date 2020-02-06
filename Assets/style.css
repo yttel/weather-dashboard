@@ -9,61 +9,28 @@ body{
   background-image: url("./Images/cork-board.png");
 }
 
-
-div.mainPanel{
-  display: flex;
-  justify-content: center;
-}
-
-div.panelContent{
-  justify-content: center;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
+div.titlePanel{
   margin-top: 30px;
-  margin-bottom: 60px;
+  border-bottom: 2px solid #666666;
 }
 
-h1.sectionContent{
+.whiteBack{
+  background-color: #ffffff;
+}
+
+.leftSidePanel{
+  border-right: 1px solid #666666;
+}
+
+.resultsPane{
+  border-radius: 5px;
+  border: 1px solid #ececec;
+}
+
+h1 {
   font-family:'Georgia', 'Times New Roman', Times, serif;
   color: #4aaaa5;
   margin: 20px;
-}
-
-div.contentBox{
-  display: flex;
-  flex-wrap: wrap;
-  margin: 20px;
-}
-
-.hourRow{
-  white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;
-}
-
-.hour {
-  background-color: #ffffff;
-  border-top: 1px dashed #000000;
-}
-
-.pink{
-  background-color: pink;
-}
-
-.beforeNow{
-  background-color: #d3d3d3;
-}
-
-.thisIsNow{
-  background-color: #ffffff;
-}
-
-.afterNow{
-  background-color: #b8e0de;
-}
-
-li.answerText{
-  border: 2px solid #4aaaa5;
 }
 
 .saveButton{
