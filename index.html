@@ -22,23 +22,33 @@
   
   <body>
     
-    <div class="mainPanel m-0"> <!--main content panel-->
-      <div class="container"> <!--container-->
-        <div class="row"> <!--everything-->
-          <div class="col-lg-2">
-            <!--placeholder for spacing on larger pages -->
-          </div>  
-          
-          <div class="col-md-12 col-lg-8 panelContent">
-        
-          </div>  <!--content area-->
-          
-          <div class="col-lg-2">
-            <!--placeholder for spacing on larger pages -->
-          </div>        
-          
-        </div> <!--row with everything-->
-      </div> <!--container-->
+    <div class="container whiteBack"> <!--main content panel-->
+      <div class="row titlePanel"> <!--title row-->
+        <div class="col-lg-12">
+          <h1 class="text-center">Weather Dashboard</h1>
+        </div>
+      </div> <!--title row-->
+      <div class="row"> <!--row 2-->
+        <div class="col-lg-3 leftSidePanel"> <!--left bar, search & list-->
+          <div class="m-4" id="search">
+            search
+          </div>
+          <div class="m-4" id="recent">
+            recent
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="row resultsPane p-4 m-4" id="current">
+            current weather
+          </div>
+          <div class="row px-4 mx-0">
+            5 day forecast heading
+          </div>
+          <div class="row resultsPane p-4 mx-4 mb-4" id="fiveDay">
+            five day forecast panels
+          </div>
+        </div>
+      </div>
     </div> <!--main panel-->
     
     <footer class="footer footerStyle">
