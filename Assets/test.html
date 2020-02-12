@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- Weather Dashboard -->
+<!-- written by Letty Bedard -->
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Weather Dashboard by Letty Bedard">
+    <meta name="author" content="Letty Bedard">
+    <meta name="keywords" content="weather dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <title>Weather Dashboard</title>
+    
+  </head>
+  
+  <body>
+    
+    <div class="container whiteBack"> <!--main content panel-->
+      <div class="row titlePanel"> <!--title row-->
+        <div class="col-lg-12">
+          <h1 class="text-center">Weather Dashboard</h1>
+        </div>
+      </div> <!--title row-->
+      <div class="row"> <!--row 2-->
+        <div class="col-lg-3 leftSidePanel"> <!--left bar, search & list-->
+          <div class="m-4" id="search">
+            search
+          </div>
+          <div class="m-4" id="recent">
+            recent
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="row resultsPane p-4 m-4" id="current">
+            current weather
+          </div>
+          <div class="row px-4 mx-0">
+            5 day forecast heading
+          </div>
+          <div class="row resultsPane p-4 mx-4 mb-4" id="fiveDay">
+            five day forecast panels
+          </div>
+        </div>
+      </div>
+    </div> <!--main panel-->
+    
+    <footer class="footer footerStyle">
+      
+      <div class="container footerText">
+        Copyright &copy; 2020
+      </div>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+
+    let apiKey = "e289f98da0cc0e60eb332ebfc1bf33ee";
+    let zipCode = "03833";
+    let queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=Concord,us&appid=${apiKey}&units=imperial`
+      
+    $.get(queryUrl).then(function(response){
+      console.log(response);
+    }, console.log("get error"));
+
+    name = "Exeter,NH"
+    let splitName = name.split(",").map(function(crntElem){
+      return crntElem.trim();
+    });
+    if (!splitName[1]){
+      //bad input
+    }
+    else if (splitName[1].length != 2){
+      //bad input
+    }
+    
+    
+    </script>
+
+  </body>
+
+</html>
+

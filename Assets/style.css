@@ -27,10 +27,18 @@ div.titlePanel{
   border: 1px solid #ececec;
 }
 
-h1 {
+h1, h5 {
   font-family:'Georgia', 'Times New Roman', Times, serif;
   color: #4aaaa5;
-  margin: 20px;
+}
+
+h3 {
+  font-family:'Georgia', 'Times New Roman', Times, serif;
+}
+
+.forecast{
+  background-color: #4aaaa5;
+  color: white;
 }
 
 .saveButton{
