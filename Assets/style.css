@@ -27,13 +27,17 @@ div.titlePanel{
   border: 1px solid #ececec;
 }
 
-h1, h5 {
+h1 {
   font-family:'Georgia', 'Times New Roman', Times, serif;
   color: #4aaaa5;
 }
 
-h3 {
+h3, h4, h5 {
   font-family:'Georgia', 'Times New Roman', Times, serif;
+}
+
+.isHidden{
+  display: none;
 }
 
 .forecast{

@@ -6,32 +6,74 @@ $(function(){
   //  DECLARATIONS
   let recentList;
   let apiKey = "e289f98da0cc0e60eb332ebfc1bf33ee";
-  // let recentList = [{
-  //   name: "Exeter, NH",
-  //   zip: "03833"
-  // },{
-  //   name: "Portsmouth, NH",
-  //   zip: "03801"
-  // },{
-  //   name: "Gilmanton, NH",
-  //   zip: "03837"
-  // },{
-  //   name: "Brentwood, NH",
-  //   zip: "03833"
-  // }];
-  //let zipCode = 0;
-  //let queryUrl = `api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&units=imperial&appid=${apiKey}`
 
   //  REFERENCES
   let $search = $("#search");
   let $recent = $("#recent");
   let $current = $("#current");
+  let $cards = [
+    $("#card1"), 
+    $("#card2"), 
+    $("#card3"), 
+    $("#card4"), 
+    $("#card5")];
 
   //  FUNCTIONS
 
   //get current weather for location by zip
+  //*** to do - pull out the appends as a function
   function getWeatherByZip(zipCode){      
     let queryUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${apiKey}&units=imperial`;
+
+    //current forecast
+    $.get(queryUrl).then(function(response){
+      console.log(response);
+      $current.append($("<h3>")
+                      .text(`${response.name} ${moment().format("MM/DD/YYYY")}`));
+      $current.append($("<div>")
+                      .html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png' alt='icon of weather'>"));              
+      $current.append($("<div>")
+                      .addClass("w-100 p-2")
+                      .html(`Temperature: ${Math.floor(response.main.temp)}&deg;F`));
+      $current.append($("<div>")
+                      .addClass("w-100 p-2")
+                      .html(`Feels Like: ${Math.floor(response.main.feels_like)}&deg;F`));                
+      $current.append($("<div>")
+                      .addClass("w-100 p-2")
+                      .text(`Wind speed: ${response.wind.speed} m.p.h.`));
+      $current.append($("<div>")
+                      .addClass("w-100 p-2")
+                      .text(`Humidity: ${response.main.humidity}%`));    
+    });
+    
+    queryUrl = `https://api.openweathermap.org/data/2.5/forecast?zip=${zipCode},us&appid=${apiKey}&units=imperial`;
+
+    //5day forecast
+    $.get(queryUrl).then(function(response){
+      console.log(response);
+      for (let i=0; i < 5; i++){
+        let theDay = response.list[(8*i+3)];
+
+        console.log(theDay);
+        $cards[i].empty();
+        $cards[i].append($("<h5>")
+                        .html(moment().add((i+1), 'days').format("MM/DD/YYYY")));
+        $cards[i].append($("<div>")
+                        .addClass("card-body p-2")
+                        .html("<img src='http://openweathermap.org/img/w/" + theDay.weather[0].icon + ".png' alt='icon of weather'>"));              
+        $cards[i].append($("<div>")
+                        .addClass("card-body p-2")
+                        .html(`Temp: ${Math.floor(theDay.main.temp)}&deg;F`));              
+        $cards[i].append($("<div>")
+                        .addClass("card-body p-2")
+                        .text(`Humidity: ${theDay.main.humidity}%`));    
+      }                
+    });
+  }
+
+  //get current weather for location by name
+  function getWeatherByName(location){
+    let queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location},us&appid=${apiKey}&units=imperial`;
 
     $.get(queryUrl).then(function(response){
       console.log(response);
@@ -40,32 +82,43 @@ $(function(){
       $current.append($("<div>")
                       .html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png' alt='icon of weather'>"));              
       $current.append($("<div>")
-                      .addClass("w-100")
+                      .addClass("w-100 p-2")
                       .html(`Temperature: ${Math.floor(response.main.temp)}&deg;F`));
       $current.append($("<div>")
-                      .addClass("w-100")
+                      .addClass("w-100 p-2")
                       .html(`Feels Like: ${Math.floor(response.main.feels_like)}&deg;F`));                
       $current.append($("<div>")
-                      .addClass("w-100")
+                      .addClass("w-100 p-2")
                       .text(`Wind speed: ${response.wind.speed} m.p.h.`));
       $current.append($("<div>")
-                      .addClass("w-100")
-                      .text(`Humidity: ${response.main.humidity}%`));    
-      //$(".wIcon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png' alt='icon of weather'>");
-    });                
-  }
+                      .addClass("w-100 p-2")
+                      .text(`Humidity: ${response.main.humidity}%`));     
+    });
 
-  //get current weather for location by name
-  function getWeatherByName(location){
-    let queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${apiKey}&units=imperial`;
+    queryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location},us&appid=${apiKey}&units=imperial`;
 
+    //5day forecast
     $.get(queryUrl).then(function(response){
       console.log(response);
-      //$(".temp").html(`Temp: ${Math.floor(response.main.temp)}&deg;F`);
-      //$(".windspeed").text(`Wind speed: ${response.wind.speed}m.p.h.`);
-      //$(".wIcon").html("<img src='http://openweathermap.org/img/w/" + response.weather[0].icon + ".png' alt='icon of weather'>");
-    });
-  }
+      for (let i=0; i < 5; i++){
+        let theDay = response.list[(8*i+3)];
+
+        console.log(theDay);
+        $cards[i].empty();
+        $cards[i].append($("<h5>")
+                        .html(moment().add((i+1), 'days').format("MM/DD/YYYY")));
+        $cards[i].append($("<div>")
+                        .addClass("card-body p-2")
+                        .html("<img src='http://openweathermap.org/img/w/" + theDay.weather[0].icon + ".png' alt='icon of weather'>"));              
+        $cards[i].append($("<div>")
+                        .addClass("card-body p-2")
+                        .html(`Temp: ${Math.floor(theDay.main.temp)}&deg;F`));              
+        $cards[i].append($("<div>")
+                        .addClass("card-body p-2")
+                        .text(`Humidity: ${theDay.main.humidity}%`));    
+    } 
+  });
+}
 
   //displays location forecast in right pane
   function showThePlace(locationObj){
@@ -76,7 +129,7 @@ $(function(){
     }
     else {
       console.log("get weather by name");
-      //getWeatherByName(encodeURI(locationObj.name));
+      getWeatherByName(encodeURI(locationObj.name));
     }               
   }      
   
@@ -150,12 +203,10 @@ $(function(){
     $current.empty()
     let goHere = this.attr("data-place");
     if ($.isNumeric(goHere)){
-      console.log("get weather by zip");
-      //getWeatherByZip(goHere);
+      getWeatherByZip(goHere);
     }
     else {
       console.log("get weather by name");
-      //getWeatherByName(encodeURI(goHere));
     }
   });
 
