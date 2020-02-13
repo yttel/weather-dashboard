@@ -17,5 +17,3 @@ Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather da
 ## Screenshots
 
 ![Initial screen](./Assets/Images/example1.PNG)
-
-![During use](./Assets/Images/example2.PNG)
