@@ -61,7 +61,6 @@ $(function(){
   }
 
   //get current weather for location by zip
-  //*** to do - pull out the appends as a function
   function getWeatherByZip(zipCode){      
     let queryUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${apiKey}&units=imperial`;
 
